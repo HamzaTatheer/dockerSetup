@@ -2,15 +2,69 @@ Basic commands
 
 docker ps (Shows all running containers)
 docker ps -a (Shows all running and non running containers)
+docker inspect --name-- for more details
+(Shows all details. Also shows enviorment variables)
+
+
 docker run (runs container of a image)
 -i is for interactive mode (Stdin works)
 -it is for interactive mode along with terminal output(Stdin and Stdout)
 it will allow to to give input to container
+
+-d for detatched mode (runs in background)
+docker logs --name-- allows you to view logs of stopped container
+
 docker stop (stops container)
 docker rm (removes image but do docker stop first)
 
 docker images (Shows all images)
 docker rmi (deletes image but stop all its running containers)
 
+Port mapping
+
+docker run
+-p 80:5000 maps external 80 to 5000
+this helps beacause lets sau we build mutliple containers each having port 5000
+now we cant run 3 5000s. we can map each to different ports
 
 
+Volume Mapping
+docker run -v externalVolume:internalvolume mysql
+it is a a way to make persistant data storage
+
+
+Enviroment Variables
+docker run -e SECRET_KEY=helloworld ACCESS=afdfdf
+now app will use these enviorment variables
+
+
+docker history --image name-- (Shows All history of a image)
+
+
+
+difference between CMD and EntryPoint in DockerFile
+CMD just runs commands if "docker run ..." doesnt have a command
+if "docker run .." has a command than the CMD defined in DockerFile will not run
+
+EntryPoint is difference as it run DockerFile command as well as terminal commands
+
+From Ubuntu
+CMD sleep 5
+terminal: docker run ... sleep 10 (sleeps for 10 sec)
+
+
+FROM Ubuntu
+ENTRYPOINT["sleep"]
+terminal: docker run ... 20 (sleeps for 20 seconds)
+
+if use did not enter time in terminal ^
+then also add CMD["20"] in dockerfile
+
+
+
+we can also skip entrypoint in docker file
+by
+docker run --entrypoint flask run
+
+
+https://kodekloud.com/courses/970256/lectures/18323817
