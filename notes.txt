@@ -1,0 +1,16 @@
+Basic commands
+
+docker ps (Shows all running containers)
+docker ps -a (Shows all running and non running containers)
+docker run (runs container of a image)
+-i is for interactive mode (Stdin works)
+-it is for interactive mode along with terminal output(Stdin and Stdout)
+it will allow to to give input to container
+docker stop (stops container)
+docker rm (removes image but do docker stop first)
+
+docker images (Shows all images)
+docker rmi (deletes image but stop all its running containers)
+
+
+
